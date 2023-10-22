@@ -12,6 +12,8 @@ Can be used to push files, or a listener
 that gives you command line access.
 '''
 
+#  TODO  Validation, Error-Handling, Socket-Cleanup
+
 
 def execute(cmd):
     cmd = cmd.strip()
@@ -22,9 +24,9 @@ def execute(cmd):
 
 
 class NetCat:
-    def __init__(self, arguments, buffer_str=None):
+    def __init__(self, arguments, input_data=None):
         self.args = arguments
-        self.buffer = buffer_str
+        self.buffer = input_data
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
@@ -98,16 +100,19 @@ class NetCat:
 
 
 if __name__ == '__main__':
+    # Creating a command line interface
     parser = argparse.ArgumentParser(
-        description='Netcat meets Python',
+        description='A network client and server.'
+                    'Can be used to push files, or a listener'
+                    'that gives you command line access.',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent('''Examples:
-        netcat.py -t 192.168.178.69 -p 5555 -l                         # shell                           
-        netcat.py -t 192.168.178.69 -p 5555 -l -u=foo.txt              # upload file                
-        netcat.py -t 192.168.178.69 -p 5555 -l -e=\"cat /etc/passwd\"  # exec cmd       
-        echo 'ABC' | ./netcat.py -t 192.168.178.69 -p 135              # echo text            
-        netcat.py -t 192.168.178.69 - p 5555                           # connect server     
-        '''))
+            netcat.py -t 192.168.178.69 -p 5555 -l -c # listen on the command shell                           
+            netcat.py -t 192.168.178.69 -p 5555 -l -u=foo.txt # upload to file                
+            netcat.py -t 192.168.178.69 -p 5555 -l -e=\"cat /etc/passwd\" # execute command       
+            echo 'ABC' | ./netcat.py -t 192.168.178.69 -p 135 # echo text            
+            netcat.py -t 192.168.178.69 - p 5555 # connect server
+            '''))
 
     parser.add_argument('-c', '--command', action='store_true', help='command shell')
     parser.add_argument('-e', '--execute', help='execute specified command')
@@ -115,7 +120,6 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port', type=int, default=5555, help='specified port')
     parser.add_argument('-t', '--target', default='192.168.178.69', help='specified IP')
     parser.add_argument('-u', '--upload', help='upload file')
-
     args = parser.parse_args()
 
     buffer = '' if args.listen else sys.stdin.read()
