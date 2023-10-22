@@ -6,6 +6,12 @@ import sys
 import textwrap
 import threading
 
+'''
+A network client and server.
+Can be used to push files, or a listener 
+that gives you command line access.
+'''
+
 
 def execute(cmd):
     cmd = cmd.strip()

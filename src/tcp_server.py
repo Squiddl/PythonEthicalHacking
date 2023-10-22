@@ -1,14 +1,15 @@
 import socket
 import threading
 
-IP = '127.0.0.1'
-PORT = 9997
+IP = "0.0.0.0"
+PORT = 9998
+CONNECTIONS = 5
 
 
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((IP, PORT))
-    server.listen(5)
+    server.listen(CONNECTIONS)
     print(f'[*] Listening on {IP}:{PORT}')
 
     while True:
