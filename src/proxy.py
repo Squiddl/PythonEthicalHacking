@@ -130,9 +130,8 @@ def server_loop(local_host, local_port, remote_host, remote_port, receive_first)
 
 def main():
     if len(sys.argv[1:]) != 5:
-        print("Usage: ./tcp_proxy.py [local_host] [local_port]", end="")
-        print("[remote_host] [remote_port] [receive_first]")
-        print("Example: ./tcp_proxy.py 127.0.0.1 9000 192.168.178.69 9000 True")
+        print("Usage: ./proxy.py [local_host] [local_port] [remote_host] [remote_port] [receive_first]")
+        print("Example: ./proxy.py 127.0.0.1 9000 192.168.178.69 9000 True")
         sys.exit(0)
     local_host = sys.argv[1]
     local_port = int(sys.argv[2])
@@ -148,3 +147,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
