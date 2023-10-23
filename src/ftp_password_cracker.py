@@ -1,6 +1,6 @@
 import ftplib
 
-server = input("Serock.send(b'ACK')ver: ")
+server = input("Server: ")
 user = input("Username: ")
 wordlist = input("Path to word list: ")
 
