@@ -23,11 +23,9 @@ if __name__ == '__main__':
     import getpass
     # gets the username from the environment
     username = getpass.getuser()
-    username = username if username else input('Username: ')
     password = getpass.getpass()
-
     ip_addr = input('Enter server IP: ') or '192.168.178.69'
     port_number = input('Enter port or <CR>: ') or 2222
-    command = input('Enter command or <CR>') or 'id'
-    # response will not be displayed to frustrate any shoulder-surfers
-    ssh_command(ip_addr, port_number, password, command)
+    command = input('Enter command or <CR>: ') or 'id'
+
+    ssh_command(ip_addr, port_number, username, password, command)
