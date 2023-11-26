@@ -22,10 +22,10 @@ def ssh_command(ip, port, user, passwd, cmd):
 if __name__ == '__main__':
     import getpass
     # gets the username from the environment
-    username = getpass.getuser()
+    username = input('Username: ')
+    # username = getpass.getuser()
     password = getpass.getpass()
     ip_addr = input('Enter server IP: ') or '192.168.178.69'
     port_number = input('Enter port or <CR>: ') or 2222
     command = input('Enter command or <CR>: ') or 'id'
-
     ssh_command(ip_addr, port_number, username, password, command)
