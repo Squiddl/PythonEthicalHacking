@@ -1,0 +1,6 @@
+Any command typed in the server (running server.py)
+is sent to the SSH client (running ssh_rcmd.py)
+and executed on the client, which return the
+output to the SSH server.
+
+
