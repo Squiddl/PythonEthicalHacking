@@ -7,7 +7,6 @@ Most Windows clients don't include an SSH Server out of the box.
 Reverse the process: Sending commands from a SSH server to the SSH client. 
 '''
 
-
 def ssh_command(ip, port, user, passwd, cmd):
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())

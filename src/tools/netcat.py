@@ -14,7 +14,6 @@ that gives you command line access.
 
 #  TODO  Validation, Error-Handling, Socket-Cleanup
 
-
 def execute(cmd):
     cmd = cmd.strip()
     if not cmd:
@@ -109,15 +108,15 @@ if __name__ == '__main__':
         epilog=textwrap.dedent('''Examples:
             netcat.py -t 192.168.178.69 -p 5555 -l -c # listen on the command shell                           
             netcat.py -t 192.168.178.69 -p 5555 -l -u=foo.txt # upload to file                
-            netcat.py -t 192.168.178.69 -p 5555 -l -e=\"cat /etc/passwd\" # execute command       
-            echo 'ABC' | ./netcat.py -t 192.168.178.69 -p 135 # echo text            
+            netcat.py -t 192.168.178.69 -p 5555 -l -e=\"cat /etc/passwd\" # execute command      
+            echo 'ABC' | ./netcat.py -t 192.168.178.69 -p 135 # echo text
             netcat.py -t 192.168.178.69 - p 5555 # connect server
             '''))
 
     parser.add_argument('-c', '--command', action='store_true', help='command shell')
     parser.add_argument('-e', '--execute', help='execute specified command')
     parser.add_argument('-l', '--listen', action='store_true', help='listen')
-    parser.add_argument('-p', '--port', type=int, default=5555, help='specified port')
+    parser.add_argument('-p', '--port', type=int, default=4444, help='specified port')
     parser.add_argument('-t', '--target', default='192.168.178.69', help='specified IP')
     parser.add_argument('-u', '--upload', help='upload file')
     args = parser.parse_args()
