@@ -99,7 +99,7 @@ class NetCat:
 
 
 if __name__ == '__main__':
-    # Creating a command line interface
+ 
     parser = argparse.ArgumentParser(
         description='A network client and server.'
                     'Can be used to push files, or a listener'
