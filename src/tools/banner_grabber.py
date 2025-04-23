@@ -2,10 +2,6 @@
 import socket
 from tabulate import tabulate
 
-"""
-"Banner Grabbing" is used to retrieve information of a service running its open ports.
-The objective is to grab information regarding the utilized software, and hints about the operating system.
-"""
 common_ports = {
     "FTP": 21,
     "SSH": 22,
