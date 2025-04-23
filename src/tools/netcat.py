@@ -8,7 +8,7 @@ import threading
 
 '''
 A network client and server.
-Can be used to to pop shells.
+Can be used to pop shells.
 '''
 
 #  TODO  Validation, Error-Handling, Socket-Cleanup
