@@ -2,10 +2,6 @@ import sys
 import socket
 import threading
 
-'''
-TCP-Proxies to help you understand unknown protocols/traffic in a network. 
-Inspection -> Modification -> Sending
-'''
 
 HEX_FILTER = ''.join([(len(repr(chr(i))) == 3) and chr(i) or '.' for i in range(256)])
 
